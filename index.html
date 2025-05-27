@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delicacy Restaurant</title>
+
+  <!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow: hidden; /* prevent scrolling */
+    }
+
+    .video-hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .video-hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .video-hero nav {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 2;
+      background: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+     color: #d4af37;
+    }
+
+    .video-hero .overlay {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5); /* semi-transparent so video shows */
+      padding: 0 1rem;
+    }
+
+    .overlay h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .overlay p {
+      font-size: 1.8rem;
+      margin: 1rem 0 2rem;
+      font-style: italic;
+      text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 2rem 4rem;
+  font-size: 2rem;
+  font-family: 'Gloria Hallelujah', cursive;
+  color: white;
+   text-shadow:
+    -1px -1px 0 #d4af37,  /* gold outline on top-left */
+    1px -1px 0 #d4af37,   /* gold outline on top-right */
+    -1px 1px 0 #d4af37,   /* gold outline on bottom-left */
+    1px 1px 0 #d4af37;    /* gold outline on bottom-right */
+  text-decoration: none;
+  background: url('https://www.transparenttextures.com/patterns/crumpled-paper.png') repeat;
+  background-size: contain;
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  box-shadow:
+    5px 5px 15px rgba(0,0,0,0.2),
+    inset 0 0 10px rgba(255,255,255,0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Folded corner effect */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 30px solid #eee;
+  border-left: 30px solid transparent;
+  border-radius: 0 12px 0 0;
+}
+
+/* Hover effect */
+.btn:hover {
+  transform: rotate(-1deg) scale(1.02);
+  box-shadow:
+    8px 8px 20px rgba(0,0,0,0.3),
+    inset 0 0 15px rgba(255,255,255,0.4);
+}
+
+    @media (max-width: 600px) {
+      .overlay h1 {
+        font-size: 3rem;
+      }
+
+      .overlay p {
+        font-size: 1.2rem;
+      }
+
+      .btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+      }
+
+      .video-hero video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="video-hero">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline>
+      <source src="pizza.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Navigation floating over the video -->
+    <nav>
+      <a href="menu_updated.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Overlay content -->
+    <div class="overlay">
+      <h1>Delicacy</h1>
+      <p>Authentic Italian Cuisine</p>
+      <a href="menu_updated.html" class="btn">Open Menu</a>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu - Restaurant</title>
+  <style>
+    /* Import Great Vibes font */
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: #111;
+      overflow-x: hidden;
+    }
+
+    /* Background video */
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1;
+      position: relative;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 100%;
+      padding: 2rem 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 5rem; /* makes "Menu" bigger */
+  font-family: 'Great Vibes', cursive; /* matches menu item titles */
+  color: white; /* white fill */
+  -webkit-text-stroke: 0.1px #d4af37; /* gold outline */
+     text-shadow:
+     0 0 5px white,
+     0 0 10px white;
+    }
+
+    .menu-item {
+      display: flex;
+      margin-bottom: 2rem;
+      width: 95%;
+      max-width: 1000px;
+      height: 500px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      overflow: hidden;
+
+      /* Align closer to left */
+      margin-left: 1rem;
+      margin-right: auto;
+    }
+
+    /* For right aligned menu-item, move closer to right and reverse layout */
+    .menu-item.right {
+      margin-left: auto;
+      margin-right: 1rem;
+      flex-direction: row-reverse;
+    }
+
+    .menu-item img {
+      width: 500px;
+      height: 500px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-item img:hover {
+  transform: scale(1.1); /* Add this block */
+}
+
+    .menu-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      flex-grow: 1;
+      padding: 2rem;
+      color: white;
+      background: transparent;
+      text-shadow:
+        -1px -1px 0 #d4af37,
+         1px -1px 0 #d4af37,
+        -1px  1px 0 #d4af37,
+         1px  1px 0 #d4af37;
+      overflow: auto;
+    }
+
+    /* UPDATED font styling with Great Vibes and wave animation */
+    .menu-text span.name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      font-weight: normal;
+      color: #d4af37; /* gold color for luxury */
+      -webkit-text-stroke: 0.5px white;
+      margin-bottom: 0.5rem;
+      text-shadow:
+        0 0 5px #d4af37,
+        0 0 10px #d4af37;
+      animation: wave 3s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    /* subtle wave animation */
+    @keyframes wave {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .menu-text span.description {
+      margin-top: 1rem; /* or try 1.5rem, 2rem to increase space */
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: #ddd;
+      text-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      .menu-item {
+        flex-direction: column !important;
+        height: auto;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .menu-item img {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video class="video-background" autoplay muted loop playsinline>
+    <source src="cooking.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu_updated.html">Menu</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    <h1>Menu</h1>
+
+    <!-- Menu Items -->
+    <div class="menu-item">
+      <img src="margherita_pizza.jpg" alt="Margherita Pizza">
+      <div class="menu-text">
+        <span class="name">Margherita Pizza — $10</span>
+        <span class="description">Our Margherita pizza is a classic masterpiece made with the freshest,
+          authentic ingredients. A thin, crispy handmade crust forms the perfect base, topped with rich,
+          tangy San Marzano tomato sauce. Creamy, melted mozzarella di bufala blankets the pizza, creating a smooth,
+          delicate texture. Fresh basil leaves add a fragrant, herbal note that perfectly balances the flavors.
+          Every bite bursts with the simplicity and harmony of genuine Italian tradition—fresh, natural, and unpretentious.
+          Perfectly baked to golden perfection, this pizza offers a delightful mix of savory, creamy, and aromatic tastes
+          that celebrate true quality and craftsmanship in every slice.</span>
+      </div>
+    </div>
+
+    <div class="menu-item right">
+      <img src="Spaghetti_Carbonara.jpg" alt="Spaghetti Carbonara">
+      <div class="menu-text">
+        <span class="name">Spaghetti Carbonara — $12</span>
+        <span class="description"> Our Pasta Carbonara is a comforting and rich dish featuring perfectly cooked spaghetti
+          that’s tender yet firm to the bite. It’s lovingly tossed in a creamy sauce made from fresh eggs and finely grated cheese, 
+          creating a smooth, silky texture that clings to every strand of pasta. Crispy, golden guanciale pieces add a smoky, savory crunch,
+          balancing the richness of the sauce with a delightful pop of flavor. Finished with a generous sprinkle of freshly ground black pepper,
+          this dish offers a harmonious blend of creamy, salty, and slightly peppery notes. Each forkful celebrates the beauty of simple,
+          high-quality ingredients combined with expert preparation, delivering an indulgent yet satisfying meal that feels
+          both elegant and deeply comforting.</span>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <img src="Caesar_Salad.jpg" alt="Caesar Salad">
+      <div class="menu-text">
+        <span class="name">Caesar Salad — $8</span>
+        <span class="description">Our Caesar Salad starts with crisp, fresh lettuce, hand-selected for its vibrant crunch
+          and bright green color. Tossed in a creamy, perfectly balanced dressing made from a blend of anchovies, freshly
+          squeezed lemon juice, garlic, Dijon mustard, and aged Parmesan cheese, it delivers a burst of savory and tangy flavors 
+          in every bite. Golden, crunchy garlic croutons add a delightful texture contrast, while extra shavings of Parmesan finish
+          the dish with a rich, nutty depth. This salad is a harmonious blend of fresh, bold, and satisfying ingredients that come 
+          together for a timeless, refreshing experience.</span>
+      </div>
+    </div>
+
+    <div class="menu-item right">
+      <img src="Tiramisu.jpg" alt="Tiramisu">
+      <div class="menu-text">
+        <span class="name">Tiramisu — $6</span>
+        <span class="description">Our Tiramisu is a decadent layered dessert that combines delicate ladyfingers soaked in rich,
+          freshly brewed espresso and a subtle touch of sweet liqueur. These layers are perfectly balanced with a creamy, velvety
+          mascarpone mixture, whipped to a light yet indulgent texture. Each bite offers a harmonious blend of bold coffee bitterness
+          and smooth sweetness, enhanced by a dusting of fine cocoa powder on top. Crafted with the finest ingredients, this dessert
+          delivers a luxurious, melt-in-your-mouth experience that feels both elegant and comforting, making it the perfect ending to
+          any meal or a delightful treat on its own.</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
