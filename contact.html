@@ -10,6 +10,7 @@
       color: #fff;
       font-family: Arial, sans-serif;
       margin: 0;
+      overflow-x: hidden;
     }
 
     /* Background video */
@@ -17,19 +18,21 @@
       position: fixed;
       top: 0;
       left: 0;
-      min-width: 100%;
-      min-height: 100%;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover; /* cover fills viewport but may crop edges */
       z-index: -1;
-      object-fit: contain;
-background-color: black; /* optional */
+      background-color: black; /* fallback if video aspect ratio differs */
     }
 
     nav {
-      background-color: #000;
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 1rem;
       display: flex;
       justify-content: center;
       gap: 2rem;
+      z-index: 10;
     }
 
     nav a {
@@ -43,20 +46,23 @@ background-color: black; /* optional */
     }
 
     .container {
+      position: relative;
       max-width: 800px;
-      margin: auto;
+      margin: 2rem auto;
       padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.5); /* semi-transparent bg for readability */
+      border-radius: 10px;
+      z-index: 10;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
       margin-bottom: 1rem;
     }
 
     .contact-info {
       font-size: 1.2rem;
       line-height: 1.6;
-      text-align: center;
     }
   </style>
 </head>
