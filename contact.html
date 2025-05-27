@@ -4,37 +4,99 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact - Restaurant</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      z-index: 1;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      text-align: center;
+      line-height: 1.8;
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Background Video -->
+  <video class="video-background" autoplay muted loop playsinline>
+    <source src="restaurant_door.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
   <nav>
     <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
+    <a href="menu_updated.html">Menu</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <main>
-    <h1>Contact Us</h1>
-    <p>You can reach us at:</p>
-    <ul>
-      <li>Phone: +1 234 567 890</li>
-      <li>Email: info@restaurant.com</li>
-      <li>Address: 123 Main Street, City</li>
-    </ul>
+  <div class="container">
+    <h1>Contact</h1>
+    <div class="contact-info">
+      📍 123 Main Street, Warsaw <br/>
+      📞 (123) 456-7890<br/>
+      📧 info@restaurant.com
+    </div>
+  </div>
 
-    <form>
-      <label for="name">Name:</label><br/>
-      <input type="text" id="name" name="name" /><br/><br/>
-
-      <label for="email">Email:</label><br/>
-      <input type="email" id="email" name="email" /><br/><br/>
-
-      <label for="message">Message:</label><br/>
-      <textarea id="message" name="message" rows="4"></textarea><br/><br/>
-
-      <button type="submit">Send</button>
-    </form>
-  </main>
 </body>
 </html>
