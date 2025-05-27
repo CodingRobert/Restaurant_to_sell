@@ -1,105 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Al Mazzini - Contattaci</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Al Mazzini - Contattaci</title>
+<style>
+  /* Reset */
+  *, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
 
-    html, body {
-      height: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #fff;
-    }
+  html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #fff;
+    overflow-x: hidden;
+  }
 
-    body {
-      overflow-x: hidden;
-      position: relative;
-    }
+  /* Video background container */
+  .video-wrap {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+    z-index: -10;
+  }
 
-    /* Make sure video covers full viewport and stays behind everything */
-    .video-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;     /* changed from min-width to width */
-      height: 100vh;    /* changed from min-height to height */
-      object-fit: cover;
-      z-index: -1;
-      pointer-events: none; /* so clicks pass through */
+  .video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    display: block;
+  }
+
+  nav {
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  nav a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    text-decoration: underline;
+    color: #f0a500;
+  }
+
+  main.container {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem 2.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+  }
+
+  .contact-info {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    main.container {
+      margin: 2rem 1rem;
+      padding: 1.5rem;
     }
 
     nav {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      position: relative;
-      z-index: 1;
+      gap: 1rem;
+      padding: 0.75rem 0;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
+      font-size: 0.9rem;
     }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-      z-index: 1;
-      position: relative;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info {
-      text-align: center;
-      line-height: 1.8;
-      font-size: 1.2rem;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <!-- Background Video -->
-  <video class="video-background" autoplay muted loop playsinline preload="auto">
-    <source src="restaurant_door.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <div class="video-wrap">
+    <video autoplay muted loop playsinline preload="auto" controls="false" disablePictureInPicture>
+      <source src="restaurant_door.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
-  <nav>
+  <nav role="navigation" aria-label="Main Navigation">
     <a href="index.html">Home</a>
     <a href="menu.html">Menu</a>
     <a href="about.html">Info</a>
     <a href="contact.html">Contattaci</a>
   </nav>
 
-  <div class="container">
+  <main class="container" role="main">
     <h1>Contattaci</h1>
-    <div class="contact-info">
-      📍 Via Giuseppe Mazzini 8, 20018 Sedriano <br/>
-      📞 +39 02 9141 0231 <br/>
+    <div class="contact-info" aria-label="Contact Information">
+      📍 Via Giuseppe Mazzini 8, 20018 Sedriano <br />
+      📞 +39 02 9141 0231 <br />
       📧 info@restaurant.com
     </div>
-  </div>
+  </main>
 
 </body>
 </html>
