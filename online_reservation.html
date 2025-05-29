@@ -131,6 +131,64 @@
       <button type="submit">Prenota</button>
     </form>
   </div>
+  
+  <!-- Your Firebase initialization scripts here -->
+
+  <script>
+    // Your firebase config and initialization code here
+
+    // Your submit handler code here: 
+document.getElementById("reservation-form").addEventListener("submit", async (e) => { 
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+
+  const docId = `${date}_${time}`; // Use date+time as unique ID
+
+  const docRef = db.collection("reservations").doc(docId);
+
+  const doc = await docRef.get();
+
+  if (doc.exists) {
+    alert("This time slot is already booked!");
+    return;
+  }
+
+  await docRef.set({
+    name,
+    email,
+    date,
+    time,
+    created: new Date()
+  });
+
+  alert("Reservation submitted successfully!");
+});
+</script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"></script>
+
+  <script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyCoDETswa1TCYvRWaS1LYYUTeNndD1CoPA",
+  authDomain: "al-mazzini-reservations.firebaseapp.com",
+  projectId: "al-mazzini-reservations",
+  storageBucket: "al-mazzini-reservations.firebasestorage.app",
+  messagingSenderId: "337927892682",
+  appId: "1:337927892682:web:1e2fc97a21c91fa072ce33",
+  measurementId: "G-JQKMFDWGV7"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 </body>
 </html>
