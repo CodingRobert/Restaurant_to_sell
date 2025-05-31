@@ -132,11 +132,12 @@
     </form>
   </div>
 
-  <!-- Firebase SDKs -->
+  <!-- Firebase SDKs (Non-modular, for direct browser use) -->
   <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"></script>
 
   <script>
+    // Initialize Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCoDETswa1TCYvRWaS1LYYUTeNndD1CoPA",
       authDomain: "al-mazzini-reservations.firebaseapp.com",
@@ -147,41 +148,45 @@
       measurementId: "G-JQKMFDWGV7"
     };
 
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // Submit handler
-    document.getElementById("reservation-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("reservation-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      const people = document.getElementById("people").value;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const people = document.getElementById("people").value;
+        const docId = `${date}_${time}`;
 
-      const docId = `${date}_${time}`;
+        try {
+          const docRef = db.collection("reservations").doc(docId);
+          const docSnap = await docRef.get();
 
-      const docRef = db.collection("reservations").doc(docId);
-      const doc = await docRef.get();
+          if (docSnap.exists) {
+            alert("Questo orario è già prenotato!");
+            return;
+          }
 
-      if (doc.exists) {
-        alert("Questo orario è già prenotato!");
-        return;
-      }
+          await docRef.set({
+            name,
+            email,
+            date,
+            time,
+            people,
+            created: new Date().toISOString()
+          });
 
-      await docRef.set({
-        name,
-        email,
-        date,
-        time,
-        people,
-        created: new Date().toISOString()
+          alert("Prenotazione inviata con successo!");
+          document.getElementById("reservation-form").reset();
+        } catch (error) {
+          console.error("Errore durante la prenotazione:", error);
+          alert("Errore durante la prenotazione. Controlla la console.");
+        }
       });
-
-      alert("Prenotazione inviata con successo!");
-      document.getElementById("reservation-form").reset();
     });
   </script>
 
