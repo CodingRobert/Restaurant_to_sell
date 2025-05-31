@@ -132,24 +132,23 @@
     </form>
   </div>
 
-  <!-- Firebase scripts -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"></script>
 
   <script>
-    // Firebase config
     const firebaseConfig = {
       apiKey: "AIzaSyCoDETswa1TCYvRWaS1LYYUTeNndD1CoPA",
       authDomain: "al-mazzini-reservations.firebaseapp.com",
       projectId: "al-mazzini-reservations",
-      storageBucket: "al-mazzini-reservations.firebasestorage.app",
+      storageBucket: "al-mazzini-reservations.appspot.com",
       messagingSenderId: "337927892682",
       appId: "1:337927892682:web:1e2fc97a21c91fa072ce33",
       measurementId: "G-JQKMFDWGV7"
     };
 
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
     // Submit handler
@@ -160,6 +159,7 @@
       const email = document.getElementById("email").value;
       const date = document.getElementById("date").value;
       const time = document.getElementById("time").value;
+      const people = document.getElementById("people").value;
 
       const docId = `${date}_${time}`;
 
@@ -167,7 +167,7 @@
       const doc = await docRef.get();
 
       if (doc.exists) {
-        alert("This time slot is already booked!");
+        alert("Questo orario è già prenotato!");
         return;
       }
 
@@ -176,10 +176,11 @@
         email,
         date,
         time,
-        created: new Date()
+        people,
+        created: new Date().toISOString()
       });
 
-      alert("Reservation submitted successfully!");
+      alert("Prenotazione inviata con successo!");
       document.getElementById("reservation-form").reset();
     });
   </script>
